@@ -2,7 +2,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.0.9
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Implementation of bencode with optional fast C extensions
 
 License:        GPLv2+ and MIT
@@ -53,5 +53,8 @@ Summary:        %{summary}
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info/
 
 %changelog
+* Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 0.0.9-2
+- Rebuilt for Python 3.11
+
 * Wed Jun 01 2022 Ondřej Pohořelský <opohorel@redhat.com> - 0.0.9-1
 - Initial package.
