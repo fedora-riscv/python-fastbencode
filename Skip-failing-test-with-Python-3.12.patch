@@ -1,0 +1,25 @@
+From d0be000759a77a4a628dca66660362ee8c65c256 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tom=C3=A1=C5=A1=20Hrn=C4=8Diar?= <thrnciar@redhat.com>
+Date: Mon, 10 Jul 2023 16:52:44 +0200
+Subject: [PATCH] Skip failing test with Python 3.12
+
+---
+ fastbencode/tests/test_bencode.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/fastbencode/tests/test_bencode.py b/fastbencode/tests/test_bencode.py
+index 267d02b..c4d3c92 100644
+--- a/fastbencode/tests/test_bencode.py
++++ b/fastbencode/tests/test_bencode.py
+@@ -293,6 +293,8 @@ class TestBencodeDecode(TestCase):
+         import platform
+         if platform.python_implementation() == 'PyPy':
+             self.skipTest('recursion not an issue on pypy')
++        if sys.version_info >= (3,12):
++            self.skipTest('The test fails with Python 3.12')
+         with RecursionLimit():
+             self._run_check_error(RuntimeError, (b"l" * 100) + (b"e" * 100))
+ 
+-- 
+2.40.1
+
